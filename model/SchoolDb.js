@@ -44,7 +44,7 @@ const studentSchema= new Schema({
     dateOfBirth:{type:Date, required:true},
     gender:{type:String},
     photo:{type:String},
-    addmissionNumber:{type:String, unique:true},
+    admissionNumber:{type:String, unique:true},
     classroom:{type:mongoose.Schema.Types.ObjectId, ref:"Classroom"},
     parent:{type:mongoose.Schema.Types.ObjectId, ref:"Parent"}    
 },{timestamps:true})
