@@ -36,6 +36,10 @@ app.use('/api/assignment',assignment)
 const student=require('./routes/studentRoute')
 app.use('/api/student',student)
 
+// admindash routes
+const admindash=require('./routes/adminDashRoute')
+app.use('/api/admindash',admindash)
+
 // connction to the database
 mongoose.connect(process.env.MONGO_URI)
 .then(()=>console.log("MongoDB Connected"))
