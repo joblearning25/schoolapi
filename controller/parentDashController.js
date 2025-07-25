@@ -1,4 +1,4 @@
-const {User,Parent,Classroom, Student}=require('../model/SchoolDb')
+const {User,Parent,Classroom, Student, Assignment}=require('../model/SchoolDb')
 
 // get the children belonging to the logged in parent
 exports.parentDash=async (req,res) => {
@@ -15,6 +15,19 @@ exports.parentDash=async (req,res) => {
         const children= await Student.find({parent:parent._id})
         .populate('classroom')
         res.status(200).json({parent,children})
+    } catch (error) {
+        res.status(500).json({message:error.message})
+    }
+    
+}
+
+// get students assignments
+exports.getClassAssignments=async (req,res) => {
+    try {
+        const assignments=await Assignment.find({classroom:req.params.id})
+        .populate('postedBy')
+        .sort({dueDate:1})
+        res.json(assignments)
     } catch (error) {
         res.status(500).json({message:error.message})
     }
