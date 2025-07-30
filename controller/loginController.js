@@ -37,16 +37,16 @@ exports.login=async (req,res)=>{
     // check the user by the email
     const user =await User.findOne({email})
     if(!user){
-        return res.status(404).json({message:"Invalid credentials.."})
+        return res.json({message:"Invalid credentials.."})
     }
     // check if the user is active 
     if (!user.isActive){
-        return res.status(403).json({message: "Your account has been deactivated"})
+        return res.json({message: "Your account has been deactivated"})
     }
     // check the password
     const isMatch =await bcrypt.compare(password,user.password)
     if(!isMatch){
-        return res.status(401).json({mssage:"Invalid Credentials .."})
+        return res.json({mssage:"Invalid Credentials .."})
     }
     // generate the jwt Token 
     const token =jwt.sign(
