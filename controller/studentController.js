@@ -117,7 +117,7 @@ exports.deleteStudent=async (req,res) => {
             {$pull: {students:deletedStudent._id}},
             {new:true}
         )
-        res.status(200).json({message:"Student deleted successfully"})
+        res.json({message:"Student deleted successfully"})
     } catch (error) {
         res.status(500).json({message:error.message})
     }    
