@@ -105,7 +105,7 @@ exports.updateStudent=async (req,res) => {
 exports.deleteStudent=async (req,res) => {
     try {
         const deletedStudent= await Student.findByIdAndDelete(req.params.id)
-        if(!deletedStudent) return res.status(404).json({message:"Student Not Found"})
+        if(!deletedStudent) return res.json({message:"Student Not Found"})
         // remove the student from classroom
         // await Classroom.updateMany(
         //     {students:deletedStudent._id},
