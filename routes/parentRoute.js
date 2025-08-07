@@ -6,7 +6,7 @@ const {auth,authorizeRoles}=require('../middleware/auth')
 
 router.post("/",auth,authorizeRoles("admin"),parentController.addParent)
 router.get('/',auth,parentController.getAppParents)
-// router.get('/:id',auth,parentController.getClassroomById)
+router.get('/:id',auth,parentController.getParentById)
 router.put('/:id',auth, authorizeRoles('admin'),parentController.updateParent)
 router.delete('/:id',auth,authorizeRoles('admin'),parentController.deleteParent)
 

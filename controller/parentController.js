@@ -78,3 +78,13 @@ exports.deleteParent= async (req,res) => {
     }
     
 }
+
+exports.getParentById=async (params) => {
+    try {
+        const parent=await Parent.findOne({nationalId:req.params.id})
+        if(!parent) return res.json({message:'Parent Not Found'})
+            res.json(parent)
+    } catch (error) {
+        res.status(500).json({message:error.message})
+    }
+}
